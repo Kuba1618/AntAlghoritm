@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.Net.Sockets;
 using System.Threading;
-using System.Net;
 
 namespace tcp_v3
 {
@@ -30,7 +23,6 @@ namespace tcp_v3
             rtb.Select(StartIndex, EndIndex - StartIndex);
             rtb.SelectionColor = kolor;
         }
-
 
         /// <summary>
         /// Dodaje do RichTextBox'a tekst o podanym kolorze. 
@@ -144,10 +136,19 @@ namespace tcp_v3
 
         void pol_KomunikatPrzybyl(object sender, KomunikatEventArgs e)
         {
+            string komWEJ = "numberOfAnts: " + e.kom.rawData.NumberOfAnts + "  " +
+                "initialPheromoneSupply: " + e.kom.rawData.InitialPheromoneSupply + "  " +
+                "numberOfRounds: " + e.kom.rawData.NumberOfRounds + "  " +
+                "x1: " + e.kom.rawData.X1 + "  " +
+                "x2:" + e.kom.rawData.X2 + "  ";
+            Console.WriteLine(komWEJ);
             AppendColoredText(richTextBoxOdbior, "["+e.kom.czasOdbioru.ToString()+"] ", Color.Blue);
-            AppendColoredText(richTextBoxOdbior, e.kom.tresc, Color.Green);
+            //AppendColoredText(richTextBoxOdbior, e.kom.tresc, Color.Green);
+            AppendColoredText(richTextBoxOdbior, komWEJ, Color.Green);
             AppendColoredText(richTextBoxOdbior, "\n", Color.Green);
         }
+
+      
 
         private void klientOdlacz()
         {
@@ -213,6 +214,7 @@ namespace tcp_v3
         {
             string str = textBoxKomunikat.Text;
             Komunikat kom = new Komunikat();
+            //Thread.Sleep(2000);
             kom.czasNadania = DateTime.Now;
             kom.nadawca = "nad1";
             kom.tresc = str;

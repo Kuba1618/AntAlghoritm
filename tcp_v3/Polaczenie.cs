@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Net.Sockets;
 using System.Threading;
 using System.Collections;
 using System.Net;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
+using WindowsFormsApplication1;
+using static tcp_v3.Komunikat;
 
 namespace tcp_v3
 {
@@ -15,15 +14,42 @@ namespace tcp_v3
     [Serializable]
     public struct Komunikat
     {
-        public string tresc;
         //public long dlugosc trasy;
         //public string kolejnosc odwiedzonych miast; 
+        //public RawData rawData;
+        public string tresc;
         public bool wazna;
         public string nadawca;
         public DateTime czasNadania;
         public DateTime czasOdbioru;
+        public RawData rawData;
     }
 
+    [Serializable]
+    public struct RawData
+    {
+        private int numberOfAnts;
+        private int initialPheromoneSupply;
+        private int numberOfRounds;
+        private int x1;
+        private int x2;
+
+        public RawData(int numberOfAnts, int initialPheromoneSupply, int numberOfRounds, int x1, int x2)
+        {
+            this.numberOfAnts = numberOfAnts;
+            this.initialPheromoneSupply = initialPheromoneSupply;
+            this.numberOfRounds = numberOfRounds;
+            this.x1 = x1;
+            this.x2 = x2;
+        }
+
+        public int NumberOfAnts { get => numberOfAnts; set => numberOfAnts = value; }
+        public int InitialPheromoneSupply { get => initialPheromoneSupply; set => initialPheromoneSupply = value; }
+        public int NumberOfRounds { get => numberOfRounds; set => numberOfRounds = value; }
+        public int X1 { get => x1; set => x1 = value; }
+        public int X2 { get => x2; set => x2 = value; }
+
+    }
 
     class KomunikatEventArgs : EventArgs
     {
@@ -35,6 +61,7 @@ namespace tcp_v3
             kom.nadawca = "";
             kom.tresc = "";
             kom.wazna = true;
+            kom.rawData = new RawData(1,2,3,4,5);
         }
     }
 
@@ -161,7 +188,7 @@ namespace tcp_v3
         /// Rozłącz i posprzątaj
         /// </summary>
         public void odlacz()
-        {
+        { 
             lock (listaKlientow)
             {
                 //zamknij wszystkie połaczanie

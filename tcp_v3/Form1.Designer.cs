@@ -116,7 +116,7 @@
             this.textBoxAdres.Name = "textBoxAdres";
             this.textBoxAdres.Size = new System.Drawing.Size(265, 22);
             this.textBoxAdres.TabIndex = 20;
-            this.textBoxAdres.Text = "127.0.0.1";
+            this.textBoxAdres.Text = "192.168.43.43";
             this.textBoxAdres.TextChanged += new System.EventHandler(this.textBoxAdres_TextChanged);
             // 
             // buttonSerwuj
