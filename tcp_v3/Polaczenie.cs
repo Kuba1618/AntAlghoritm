@@ -5,8 +5,6 @@ using System.Collections;
 using System.Net;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
-using WindowsFormsApplication1;
-using static tcp_v3.Komunikat;
 
 namespace tcp_v3
 {
@@ -61,7 +59,7 @@ namespace tcp_v3
             kom.nadawca = "";
             kom.tresc = "";
             kom.wazna = true;
-            kom.rawData = new RawData(1,2,3,4,5);
+            kom.rawData = new RawData();
         }
     }
 
@@ -178,6 +176,7 @@ namespace tcp_v3
                 if (kli.tcpKlient.Connected)
                 {
                     kom.czasNadania = DateTime.Now;
+                    kom.rawData = new RawData(50, 1, 200, 4, 5);
                     bf.Serialize(kli.tcpKlient.GetStream(), kom);
                 }
             }
