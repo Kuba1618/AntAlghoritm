@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Threading;
+using WindowsFormsApplication1;
 
 namespace tcp_v3
 {
@@ -138,17 +139,17 @@ namespace tcp_v3
         {
             string komWEJ = "numberOfAnts: " + e.kom.rawData.NumberOfAnts + "  " +
                 "initialPheromoneSupply: " + e.kom.rawData.InitialPheromoneSupply + "  " +
-                "numberOfRounds: " + e.kom.rawData.NumberOfRounds + "  " +
-                "x1: " + e.kom.rawData.X1 + "  " +
-                "x2:" + e.kom.rawData.X2 + "  ";
+                "numberOfRounds: " + e.kom.rawData.NumberOfRounds + "  ";
             Console.WriteLine(komWEJ);
             AppendColoredText(richTextBoxOdbior, "["+e.kom.czasOdbioru.ToString()+"] ", Color.Blue);
             //AppendColoredText(richTextBoxOdbior, e.kom.tresc, Color.Green);
             AppendColoredText(richTextBoxOdbior, komWEJ, Color.Green);
             AppendColoredText(richTextBoxOdbior, "\n", Color.Green);
+            AntAlghoritm alg = new AntAlghoritm(50, 15, 1);
+            alg.metoda1();
         }
 
-      
+
 
         private void klientOdlacz()
         {

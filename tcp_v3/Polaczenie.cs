@@ -12,9 +12,6 @@ namespace tcp_v3
     [Serializable]
     public struct Komunikat
     {
-        //public long dlugosc trasy;
-        //public string kolejnosc odwiedzonych miast; 
-        //public RawData rawData;
         public string tresc;
         public bool wazna;
         public string nadawca;
@@ -29,25 +26,20 @@ namespace tcp_v3
         private int numberOfAnts;
         private int initialPheromoneSupply;
         private int numberOfRounds;
-        private int x1;
-        private int x2;
 
-        public RawData(int numberOfAnts, int initialPheromoneSupply, int numberOfRounds, int x1, int x2)
+        public RawData(int numberOfAnts, int initialPheromoneSupply, int numberOfRounds)
         {
             this.numberOfAnts = numberOfAnts;
             this.initialPheromoneSupply = initialPheromoneSupply;
             this.numberOfRounds = numberOfRounds;
-            this.x1 = x1;
-            this.x2 = x2;
         }
 
         public int NumberOfAnts { get => numberOfAnts; set => numberOfAnts = value; }
         public int InitialPheromoneSupply { get => initialPheromoneSupply; set => initialPheromoneSupply = value; }
         public int NumberOfRounds { get => numberOfRounds; set => numberOfRounds = value; }
-        public int X1 { get => x1; set => x1 = value; }
-        public int X2 { get => x2; set => x2 = value; }
 
     }
+    
 
     class KomunikatEventArgs : EventArgs
     {
@@ -176,7 +168,7 @@ namespace tcp_v3
                 if (kli.tcpKlient.Connected)
                 {
                     kom.czasNadania = DateTime.Now;
-                    kom.rawData = new RawData(50, 1, 200, 4, 5);
+                    kom.rawData = new RawData(50, 1, 20);
                     bf.Serialize(kli.tcpKlient.GetStream(), kom);
                 }
             }
