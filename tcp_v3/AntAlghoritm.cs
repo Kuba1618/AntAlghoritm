@@ -11,6 +11,7 @@ namespace WindowsFormsApplication1
     {
         int iloscmrowek;
         int iloscrund;
+        double ostatecznyzwyciezca;
 
         double feromon;
         // stworzenie tablicy, która jest zbiorem miast/punktów
@@ -346,7 +347,8 @@ namespace WindowsFormsApplication1
                 }
 
             }
-            double ostatecznyzwyciezca = wszyscyzwyciezcy[0, 0];
+            
+            ostatecznyzwyciezca = wszyscyzwyciezcy[0, 0];
             int z = 0;
             for (int j = 0; j < iloscrund; j++)
             {
@@ -368,8 +370,17 @@ namespace WindowsFormsApplication1
             }
 
 
+
             string path = @"C:\Users\jakub\Desktop\" +
-                               "aaa" + ".txt";
+                               "results" + ".txt";
+
+            saveResultToFile(path);
+
+
+        }
+
+        public void saveResultToFile(string path)
+        {
 
             if (!File.Exists(path))
             {
@@ -389,7 +400,6 @@ namespace WindowsFormsApplication1
                     sw.WriteLine(ostatecznyzwyciezca);
                 }
             }
-
         }
 
     }
