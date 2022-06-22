@@ -17,29 +17,55 @@ namespace tcp_v3
         public string nadawca;
         public DateTime czasNadania;
         public DateTime czasOdbioru;
-        public RawData rawData;
+        public DaneWejsciowe daneWejsciowe;
     }
+
 
     [Serializable]
-    public struct RawData
+    public struct DaneWejsciowe
     {
-        private int numberOfAnts;
-        private int initialPheromoneSupply;
-        private int numberOfRounds;
+        private int iloscMrowek;
+        private int iloscFeromonu;
+        private int iloscRund;
 
-        public RawData(int numberOfAnts, int initialPheromoneSupply, int numberOfRounds)
+        public DaneWejsciowe(int iloscMrowek, int iloscFeromonu, int iloscRund)
         {
-            this.numberOfAnts = numberOfAnts;
-            this.initialPheromoneSupply = initialPheromoneSupply;
-            this.numberOfRounds = numberOfRounds;
+            this.iloscMrowek = iloscMrowek;
+            this.iloscFeromonu = iloscFeromonu;
+            this.iloscRund = iloscRund;
         }
 
-        public int NumberOfAnts { get => numberOfAnts; set => numberOfAnts = value; }
-        public int InitialPheromoneSupply { get => initialPheromoneSupply; set => initialPheromoneSupply = value; }
-        public int NumberOfRounds { get => numberOfRounds; set => numberOfRounds = value; }
+        public void setIloscMrowek(int iloscMrowek)
+        {
+            this.iloscMrowek = iloscMrowek;
+        }
 
+        public int getIloscMrowek()
+        {
+            return this.iloscMrowek;
+        }
+
+        public void setIloscFeromonu(int iloscFeromonu)
+        {
+            this.iloscFeromonu = iloscFeromonu;
+        }
+
+        public int getIloscFeromonu()
+        {
+            return this.iloscFeromonu;
+        }
+
+        public void setIloscRund(int iloscRund)
+        {
+            this.iloscRund = iloscRund;
+        }
+
+        public int getIloscRund()
+        {
+            return this.iloscRund;
+        }
     }
-    
+
 
     class KomunikatEventArgs : EventArgs
     {
@@ -51,7 +77,7 @@ namespace tcp_v3
             kom.nadawca = "";
             kom.tresc = "";
             kom.wazna = true;
-            kom.rawData = new RawData();
+            kom.daneWejsciowe = new DaneWejsciowe();
         }
     }
 
@@ -69,7 +95,6 @@ namespace tcp_v3
             idPolaczenia = id_pol;
         }
     }
-
 
     class PolaczenieUstanowioneEventArgs : EventArgs
     {
@@ -168,7 +193,7 @@ namespace tcp_v3
                 if (kli.tcpKlient.Connected)
                 {
                     kom.czasNadania = DateTime.Now;
-                    kom.rawData = new RawData(50, 1, 20);
+                    kom.daneWejsciowe = new DaneWejsciowe(50, 1, 20);
                     bf.Serialize(kli.tcpKlient.GetStream(), kom);
                 }
             }
@@ -295,4 +320,3 @@ namespace tcp_v3
 
     }
 }
-

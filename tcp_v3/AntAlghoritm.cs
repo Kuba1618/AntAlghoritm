@@ -368,8 +368,8 @@ namespace WindowsFormsApplication1
             }
 
 
-            string path = @"D:\PolitechnikaPSK\aaPOLIBUDA\IV rok\Sem8\sem8\PSR\Projekt\PROJEKT\Algorytm mrowkowy7\" +
-                               "bbb" + ".txt";
+            string path = @"C:\Users\jakub\Desktop\" +
+                               "aaa" + ".txt";
 
             if (!File.Exists(path))
             {
@@ -385,22 +385,12 @@ namespace WindowsFormsApplication1
                 // if it is not deleted.
                 using (StreamWriter sw = File.AppendText(path))
                 {
-                    sw.WriteLine("Trasa 6:");
+                    sw.WriteLine("Trasa 5:");
                     sw.WriteLine(ostatecznyzwyciezca);
                 }
             }
 
-
-
-
-            //SaveToTextFile("najlepszaDlugoscTrasy", Convert.ToString(ostatecznyzwyciezca));
         }
-
-        /*public void SaveToTextFile(string fileName, string data)
-        {
-           
-
-        }*/
 
     }
 }

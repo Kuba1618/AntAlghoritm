@@ -134,14 +134,15 @@ namespace tcp_v3
             AppendColoredText(richTextBoxOdbior, "Połączono z: " , Color.Red);
             AppendColoredText(richTextBoxOdbior, e.adres.ToString() + "\n", Color.Blue);
         }
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         void pol_KomunikatPrzybyl(object sender, KomunikatEventArgs e)
         {
-            string komWEJ = "numberOfAnts: " + e.kom.rawData.NumberOfAnts + "  " +
-                "initialPheromoneSupply: " + e.kom.rawData.InitialPheromoneSupply + "  " +
-                "numberOfRounds: " + e.kom.rawData.NumberOfRounds + "  ";
+            string komWEJ = "iloscMrowek: " + e.kom.daneWejsciowe.getIloscMrowek() + "  " +
+                "poczatkowaIloscFeromonu: " + e.kom.daneWejsciowe.getIloscFeromonu() + "  " +
+                "iloscRund: " + e.kom.daneWejsciowe.getIloscRund() + "  ";
             Console.WriteLine(komWEJ);
-            AppendColoredText(richTextBoxOdbior, "["+e.kom.czasOdbioru.ToString()+"] ", Color.Blue);
+            AppendColoredText(richTextBoxOdbior, "[" + e.kom.czasOdbioru.ToString() + "] ", Color.Blue);
             //AppendColoredText(richTextBoxOdbior, e.kom.tresc, Color.Green);
             AppendColoredText(richTextBoxOdbior, komWEJ, Color.Green);
             AppendColoredText(richTextBoxOdbior, "\n", Color.Green);
