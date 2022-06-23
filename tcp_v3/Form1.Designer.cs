@@ -79,7 +79,7 @@
             this.label1.Location = new System.Drawing.Point(21, 17);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 17);
+            this.label1.Size = new System.Drawing.Size(43, 16);
             this.label1.TabIndex = 23;
             this.label1.Text = "Adres";
             // 
@@ -95,6 +95,7 @@
             this.richTextBoxOdbior.Size = new System.Drawing.Size(356, 106);
             this.richTextBoxOdbior.TabIndex = 22;
             this.richTextBoxOdbior.Text = "";
+            this.richTextBoxOdbior.TextChanged += new System.EventHandler(this.richTextBoxOdbior_TextChanged);
             // 
             // textBoxPort
             // 
