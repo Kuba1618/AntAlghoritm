@@ -146,8 +146,8 @@ namespace tcp_v3
             //AppendColoredText(richTextBoxOdbior, e.kom.tresc, Color.Green);
             AppendColoredText(richTextBoxOdbior, komWEJ, Color.Green);
             AppendColoredText(richTextBoxOdbior, "\n", Color.Green);
-            AntAlghoritm alg = new AntAlghoritm(50, 15, 1);
-            alg.metoda1();
+            AntAlghoritm alg = new AntAlghoritm(5, 1, 1);
+            alg.sendTheAntsOnTheRoad();
         }
 
 
@@ -230,6 +230,11 @@ namespace tcp_v3
         }
 
         private void textBoxAdres_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richTextBoxOdbior_TextChanged(object sender, EventArgs e)
         {
 
         }
